@@ -27,10 +27,11 @@
         },
         methods: {
             signUp (){
+                let self = this;
                 firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                     .then(
                         function (user) {
-                            this.$router.replace({name: 'Stocks'})
+                            self.$router.push({path: '/stocks'})
                         },
                         function (err) {
                             alert(`Ooops ${err.message}`)

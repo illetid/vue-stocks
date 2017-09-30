@@ -53,13 +53,13 @@ router.beforeEach((to, from, next) => {
 
     if (requiresAuth && !currentUser) {
         next({
-            path : '/login',
-            query: { redirect: to.fullPath }
+            path: '/login',
+            query: {redirect: to.fullPath}
         })
     }
     else if (!requiresAuth && currentUser) {
         next({
-            path : '/'
+            path: '/stocks'
         })
     } else {
         next();
