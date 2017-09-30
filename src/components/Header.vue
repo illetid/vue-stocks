@@ -34,21 +34,30 @@
                 </li>
             </ul>
 
+            <router-link v-if="!isLogged" class="btn" to="/login">
+                Login
+            </router-link>
+            <button v-if="isLogged" class="btn" @click="logout">Logout</button>
         </div>
     </nav>
 </template>
 
 <script>
     import {mapActions} from 'vuex';
+    import firebase from 'firebase'
     export default {
         data() {
             return {
-                isDropdownOpen: false
+                isDropdownOpen: false,
+
             }
         },
         computed: {
             funds() {
                 return this.$store.getters.funds;
+            },
+            isLogged() {
+                return firebase.auth().currentUser;
             }
         },
         methods: {
@@ -70,7 +79,13 @@
             },
             loadData() {
                 this.fetchData();
+            },
+            logout (){
+                firebase.auth().signOut().then(() => {
+                    this.$router.push({path: 'login'})
+                });
             }
+
         }
     }
 </script>
