@@ -1,0 +1,10 @@
+{
+  "name": "vue-test-stock",
+  "version": "1.0.0",
+  "description": "vueteststockapp",
+  "author": "illetid",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  }
+}
